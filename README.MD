@@ -20,3 +20,16 @@ django-admin start-project watchmate .
 ```bash
 python3 manage.py startapp watchlist_app
 ```
+
+```bash
+python3 manage.py runserver
+```
+
+# create database
+```bash
+python manage.py migrate
+```
+# create user
+```bash
+python manage.py createsuperuser
+```
