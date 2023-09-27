@@ -33,3 +33,15 @@ python manage.py migrate
 ```bash
 python manage.py createsuperuser
 ```
+# when some changes in models.py :
+```bash
+python manage.py makemigraons
+
+python manage.py migrate
+
+python manage.py runserver
+```
+
+# regist your model in admin.py, views, url 
+
+
