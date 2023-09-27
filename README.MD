@@ -44,4 +44,9 @@ python manage.py runserver
 
 # regist your model in admin.py, views, url 
 
+## django rest Api
+```bash
+pip install djangorestframework
+```
+
 
