@@ -42,12 +42,12 @@ class StreamPlatformDetailAV(APIView):
                 platform = StreamPlatform.objects.get(pk=pk)
             except StreamPlatform.DoesNotExist:
                 return Response({'Error': "Doesn't exist"}, status=status.HTTP_404_NOT_FOUND)
-            serializer = StreamPlatform(platform)
+            serializer = StreamPlatformSerializer(platform)
             return Response(serializer.data)
         
         def put(self, request, pk):
             movie =  StreamPlatform.objects.get(pk=pk)
-            serializer = StreamPlatform(movie, data=request.data)
+            serializer = StreamPlatformSerializer(movie, data=request.data)
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data)
