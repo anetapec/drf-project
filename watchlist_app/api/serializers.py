@@ -9,14 +9,15 @@ class WatchSerializer(serializers.ModelSerializer):
         # fields = ['id', 'name', 'description']
         #exclude = ['name']
         
-class StreamPlatformSerializer(serializers.ModelSerializer):
-    # watchlist = WatchSerializer(many=True, read_only=True)
+class StreamPlatformSerializer(serializers.HyperlinkedModelSerializer):
+    watchlist = WatchSerializer(many=True, read_only=True)
     # watchlist = serializers.StringRelatedField(many=True)   # show only title
-    watchlist = serializers.HyperlinkedRelatedField(
-         many=True,
-         read_only=True,
-         view_name='movie-datail'
-     )
+    
+    # watchlist = serializers.HyperlinkedRelatedField(
+        #  many=True,
+        #  read_only=True,
+        #  view_name='movie-datail'
+    #  )
     class Meta:
          model = StreamPlatform
          fields = "__all__"   
