@@ -9,6 +9,18 @@ from rest_framework import generics
 
 
 
+class ReviewCreate(generics.CreateAPIView):
+    serializer_class = ReviewSerializer
+    
+    def perform_create(self, serializer):
+        pk = self.kwargs.get('pk')
+        movie = WatchList.objects.get(pk=pk)
+        
+        serializer.save(watchlist=movie)
+    
+
+
+
 
 class ReviewList(generics.ListCreateAPIView):
     # queryset = Review.objects.all()
