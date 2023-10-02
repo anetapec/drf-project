@@ -4,7 +4,7 @@ from rest_framework import status
 from watchlist_app.models import WatchList, StreamPlatform, Review
 from watchlist_app.api.serializers import WatchSerializer, StreamPlatformSerializer, ReviewSerializer
 from rest_framework.views import APIView
-from rest_framework import mixins
+from rest_framework import mixins, viewsets
 from rest_framework import generics
 
 
@@ -61,8 +61,25 @@ class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
     # def post(self, request, *args, **kwargs):
         # return self.create(request, *args, **kwargs)
 
-
+class StreamPlatform(viewsets.ViewSet):
+ 
+    def list(self, request):
+        queryset = StreamPlatformSerializer.objects.all()
+        serializer = StreamPlatformSerializer(queryset, many=True)
+        return Response(serializer.data)
+    
+    def retrive(self, request, pk=None):
+        queryset = StreamPlatformSerializer.objects.all()
+        watchlist = get_object_or_404(queryset, pk=pk)
+        serializer = StreamPlatformSerializer(StreamPlatform)
+        return Response(serializer.data)
+    
+    
 class StreamPlatformAV(APIView):
+    
+    
+    
+    
     
     def get(self, request):
         platform = StreamPlatform.objects.all()
